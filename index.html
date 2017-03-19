@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html ng-app="helloApp">
 <meta charset="utf-8">
   <head>
@@ -17,6 +17,27 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
      <script src="https://code.angularjs.org/1.2.16/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+</body>
+
+</html> -->
+
+<!doctype html>
+<html ng-app="demo">
+<meta charset="utf-8">
+
+<head>
+</head>
+
+<body>
+    <div ng-controller="Hello" id="test">
+        <p>The ID is {{greeting.data[0].id}}</p>
+        <!-- <img src="test"> -->
+        <!-- <p>The content is {{greeting.content}}</p> -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.16/angular-route.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/mainController.js"></script>
 </body>

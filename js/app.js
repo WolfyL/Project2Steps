@@ -7,13 +7,13 @@
 helloApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
     when('/', {
-        templateUrl: 'hello.html',
-        controller: 'helloCtrl'
+        templateUrl: 'index.html',
+        controller: 'Hello'
     }).
-    when('/people', {
-        templateUrl: 'people.html',
-        controller: 'peopleCtrl'
-    }).
+    // when('/people', {
+    //     templateUrl: 'people.html',
+    //     controller: 'peopleCtrl'
+    // }).
     otherwise({
         redirectTo: '/'
     });
