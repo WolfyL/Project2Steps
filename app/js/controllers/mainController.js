@@ -33,4 +33,11 @@ angular.module('app')
             document.execCommand('copy');
             return false;
         };
+
+        $scope.next = function() {
+          GifService.getLucky().then(function(res) {
+              $scope.lucky = res.data;
+          });
+
+        };
     });
