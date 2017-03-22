@@ -1,0 +1,58 @@
+/*================================================================================
+font import
+================================================================================*/
+@font-face {
+   font-family: 'lemon';
+   src:url('/fonts/Lemon-Regular.ttf');
+}
+@font-face {
+   font-family: 'titan one';
+   src:url('/fonts/TitanOne-Regular.ttf');
+}
+@font-face {
+   font-family: 'bowlbyone';
+   src:url('/fonts/BowlbyOne-Regular.ttf');
+}
+
+/*================================================================================
+font import
+================================================================================*/
+
+body {
+    background-color: black;
+    font-family: 'lemon';
+    font-weight: bold;
+}
+
+
+/*================================================================================
+Navbar CSS
+================================================================================*/
+
+#navBackground {
+    background-color: black;
+}
+
+#navbarTitle {
+    font-style: italic;
+    font-size: 30px;
+    color: #F123B3;
+    border-bottom: 2px solid #10EE2E;
+    padding-left: 0px;
+    padding-right: 50px;
+    margin-left: 25%;
+}
+.navbar-inverse .navbar-nav {
+  margin-right: 10%;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #10EE2E;
+  font-size: 18px;
+
+}
+
+
+/*================================================================================
+Navbar CSS
+================================================================================*/
