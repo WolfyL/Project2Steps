@@ -22,6 +22,17 @@ angular.module('app')
                     }
                 }
             })
+
+            .state('anon.main', {
+                url: '/main',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/main.html',
+                        controller: 'MainController'
+                    }
+                }
+            })
+
             .state('anon.login', {
                 url: '/login',
                 views: {

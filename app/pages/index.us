@@ -2,11 +2,14 @@
 <html ng-app="app">
 
 <head>
+
+
     <title>
         <%= pkg.name %>
     </title>
 
     <link rel="stylesheet" type="text/css" href="<%= css %>" media="all" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 </head>
 
 <body>
