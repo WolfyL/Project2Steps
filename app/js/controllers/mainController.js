@@ -21,7 +21,6 @@ angular.module('app')
             search = $scope.search;
             GifService.getSearch(search).then(function(res) {
                 $scope.getSearch = res.data;
-                console.log($scope.getSearch);
             });
         };
 
@@ -32,5 +31,12 @@ angular.module('app')
             toCopy.select();
             document.execCommand('copy');
             return false;
+        };
+
+        $scope.next = function(){
+          GifService.getLucky().then(function(res) {
+              $scope.lucky = res.data;
+              console.log($scope.lucky);
+          });
         };
     });

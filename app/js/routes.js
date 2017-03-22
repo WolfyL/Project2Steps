@@ -50,6 +50,15 @@ angular.module('app')
                         controller: 'RegisterController'
                     }
                 }
+            })
+            .state('anon.search', {
+                url: '/search',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/search.html',
+                        controller: 'SearchController'
+                    }
+                }
             });
         $stateProvider
             .state('user', {

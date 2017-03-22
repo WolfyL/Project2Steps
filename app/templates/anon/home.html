@@ -1,10 +1,9 @@
 <!-- <img src="{{all.data[0].images.downsized.url}}" alt=""> -->
 
-
-
-
-
-
+<img src="{{lucky.data.image_url}}" alt="">
+<input type="text" id='to-copy' value="{{lucky.data.image_url}}">
+<button ng-click='copy()'>Copy</button>
+<button ng-click='next()' type="button">New Gif</button>
 
 <!-- <input ng-model='search'><button ng-click='goSearch()'>Go</button>
 <div ng-repeat="element in getSearch.data">
