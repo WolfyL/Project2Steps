@@ -22,6 +22,7 @@ angular.module('app')
                     }
                 }
             })
+
             .state('anon.main', {
                 url: '/main',
                 views: {
@@ -31,6 +32,7 @@ angular.module('app')
                     }
                 }
             })
+
             .state('anon.login', {
                 url: '/login',
                 views: {
