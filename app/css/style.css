@@ -1,18 +1,22 @@
-/*================================================================================
+    /*================================================================================
 font import
 ================================================================================*/
+
 @font-face {
-   font-family: 'lemon';
-   src:url('/fonts/Lemon-Regular.ttf');
+    font-family: 'lemon';
+    src: url('/fonts/Lemon-Regular.ttf');
 }
+
 @font-face {
-   font-family: 'titan one';
-   src:url('/fonts/TitanOne-Regular.ttf');
+    font-family: 'titan one';
+    src: url('/fonts/TitanOne-Regular.ttf');
 }
+
 @font-face {
-   font-family: 'bowlbyone';
-   src:url('/fonts/BowlbyOne-Regular.ttf');
+    font-family: 'bowlbyone';
+    src: url('/fonts/BowlbyOne-Regular.ttf');
 }
+
 
 /*================================================================================
 font import
@@ -36,20 +40,22 @@ Navbar CSS
     padding-right: 50px;
     margin-left: 25%;
 }
+
 .navbar-inverse .navbar-nav {
-  margin-right: 10%;
+    margin-right: 10%;
 }
 
-.navbar-inverse .navbar-nav > li > a{
-  color: #10EE2E;
-  font-size: 18px;
-
+.navbar-inverse .navbar-nav>li>a {
+    color: #10EE2E;
+    font-size: 18px;
 }
 
 
 /*================================================================================
 Navbar CSS
 ================================================================================*/
+
+
 /*================================================================================
 body CSS
 ================================================================================*/
@@ -59,26 +65,32 @@ body {
     font-family: 'lemon';
     font-weight: bold;
 }
-#GifSearch{
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
+
+#GifSearch {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-left: 20vw;
+    position: fixed;
 }
-#GifMain{
-  width: 500px;
-  height: 400px;
+
+#GifMain {
+    width: 45vw;
+    max-height: 600px;
 }
-#to-copy{
-  font-size: 12px;
-  width: 250px;
-  border-radius: 5px;
-  border: black;
-  background-color: grey ;
+
+#to-copy {
+    font-size: 12px;
+    width: 250px;
+    border-radius: 5px;
+    border: black;
+    background-color: grey;
 }
-#btnCopy{
-  border-radius: 20px;
-  background-color: grey;
-  color: #F123B3;
+
+#btnCopy {
+    border-radius: 20px;
+    background-color: grey;
+    color: #F123B3;
 }
 
 
@@ -86,19 +98,45 @@ body {
 body CSS
 ================================================================================*/
 
+#btLike {
+  margin-left: 4vw;
+  margin-top: 9vw;
+  height: 10vw;
+  border-radius: 10vw;
+}
+
+#btDislike {
+    margin-left: -10vw;
+    margin-top: 8vw;
+    height: 11vw;
+    border-radius: 6vw
+}
+
+#partGif {
+    margin-top: 8vw;
+}
+
 
 /*================================================================================
 @media screen mobile
 ================================================================================*/
 
-@media  screen and (min-width: 320px) and (max-width: 991px){
+
+/*@media  screen and (min-width: 320px) and (max-width: 991px){
 
   #navbarTitle {
     font-size: 20px;
     margin-left: 10px;
   }
-
 }
 /*================================================================================
 @media screen mobile
 ================================================================================*/
+
+@media screen and (min-width: 992px) and (max-width: 1500px) {
+    /*  #btDislike{
+    margin-left: 5vw;
+  }
+  #btLike{
+    margin-left: -10vw;
+  }*/

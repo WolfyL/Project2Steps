@@ -4,17 +4,19 @@
             <a href="#"><img id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt=""></a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-offset-2 col-xs-1">
-            <a href="#" ng-click="addDislike()">dislike<img src="" alt=""></a>
+
+    <div class="row" id="partGif">
+        <div class="col-xs-1">
+            <a href="#" ng-click="addDislike()"><img id="btDislike" src="../img/gifDislike.gif"></a>
         </div>
         <div class="col-xs-6">
             <img src="{{lucky.data.image_url}}" alt="" id="GifMain">
         </div>
-        <div class="col-xs-offest-1 col-xs-1">
-            <a href="#" ng-click="addLike()">like<img src="" alt=""></a>
+        <div class="col-xs-offset-2 col-xs-1">
+            <a href="#" ng-click="addLike()"><img id="btLike" src="../img/gifLike.gif"></a>
         </div>
     </div>
+
     <div class="row">
       <div class="col-xs-offset-5 col-xs-4">
         <p>like/dislike</p>
