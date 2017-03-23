@@ -6,7 +6,7 @@ angular.module('app')
         });
         GifService.getLucky().then(function(res) {
             $scope.lucky = res.data;
-            console.log($scope.lucky);
+            // console.log($scope.lucky);
         });
 
         $scope.addNumber = function() {
@@ -17,12 +17,26 @@ angular.module('app')
             });
         };
 
-        $scope.goSearch = function() {
-            search = $scope.search;
-            GifService.getSearch(search).then(function(res) {
-                $scope.getSearch = res.data;
-            });
+
+        $scope.loupe = function PromptMessage() {
+            var saisie = prompt("Saisissez votre texte :", "");
+            if (saisie !== null) {
+                // $scope.goSearch = function() {
+                    // search = $scope.search;
+                    console.log(saisie);
+                    GifService.getSearch(saisie).then(function(res) {
+                        var i = Math.floor(Math.random(0, 101) * 100);
+                        console.log(i);
+                        $scope.getSearch = res.data.data[i];
+                        console.log($scope.getSearch);
+                    // });
+                });
+            }
         };
+
+
+
+        // };
 
         $scope.copy = function() {
             var toCopy = document.getElementById('to-copy'),
@@ -33,10 +47,20 @@ angular.module('app')
             return false;
         };
 
-        $scope.next = function(){
-          GifService.getLucky().then(function(res) {
-              $scope.lucky = res.data;
-              console.log($scope.lucky);
-          });
+        $scope.next = function() {
+            GifService.getLucky().then(function(res) {
+                $scope.lucky = res.data;
+                // console.log($scope.lucky);
+            });
+        };
+
+        $scope.goSearch = function() {
+            search = $scope.search;
+            GifService.getSearch(search).then(function(res) {
+                var i = Math.floor(Math.random(0, 101) * 100);
+                console.log(i);
+                $scope.getSearch = res.data.data[i];
+                console.log($scope.getSearch);
+            });
         };
     });

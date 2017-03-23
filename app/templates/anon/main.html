@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-10 col-xs-1">
-            <a href="/#!/search"><img id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt=""></a>
+            <img ng-click='loupe()' id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt="">
+              <img src="{{getSearch.images.downsized.url}}" alt="">
+            <!-- <input ng-model='search'><button ng-click='goSearch()'>Go</button> -->
         </div>
     </div>
     <div class="row">
