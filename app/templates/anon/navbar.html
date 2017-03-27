@@ -16,10 +16,17 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
+<<<<<<< HEAD
                     <li ui-sref-active="active"><a href="/#!/home" ui-sref="anon.hamon">Logout</a></li>
                     <li ui-sref-active="active"><a href="/#!/history" ui-sref="anon.history">History</a></li>
                     
 
+=======
+                    <li ui-sref-active="active"><a ui-sref="anon.login" ng-hide="auth.isAuthenticated()" >Logout</a></li>
+                    <li ui-sref-active="active"><a ui-sref="anon.history" ng-hide="auth.isAuthenticated()" >History</a></li>
+                    <li ui-sref-active="active"><a ui-sref="user.dashboard" ng-show="auth.isAuthenticated()">Dashboard</a></li>
+                    <li><a ng-click="logout()" ng-show="auth.isAuthenticated()" href='#'>Logout</a></li>
+>>>>>>> 238d14c78a7a0b7b8ad92db15d7e7e8655aec54e
                 </li>
             </ul>
         </div>
