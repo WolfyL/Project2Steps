@@ -1,13 +1,16 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService) {
+    .controller('MainController', function($scope, GifService, VoteService) {
         var n = 0;
-        GifService.getAll().then(function(res) {
-            $scope.all = res.data;
-        });
-        GifService.getLucky().then(function(res) {
-            $scope.lucky = res.data;
-            console.log($scope.lucky);
-        });
+
+
+        function ramdonGif() {
+            GifService.getLucky().then(function(res) {
+                $scope.lucky = res.data.data.image_url;
+                $scope.gifId = res.data.data.id;
+                console.log($scope.gifId);
+                console.log($scope.lucky);
+            });
+        }
 
         $scope.addNumber = function() {
             n = $scope.number;
@@ -33,4 +36,19 @@ angular.module('app')
             document.execCommand('copy');
             return false;
         };
+
+        $scope.addDislike = function() {
+            VoteService.updateDislike($scope.gifId, +1).then(function(res) {
+            });
+
+            ramdonGif();
+        };
+
+        $scope.addLike = function() {
+            VoteService.updateLike($scope.gifId, +1).then(function(res) {
+            });
+
+            ramdonGif();
+        };
+        ramdonGif();
     });

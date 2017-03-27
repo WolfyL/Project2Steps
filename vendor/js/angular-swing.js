@@ -555,7 +555,6 @@ Card.THROW_OUT = 'out';
 
 exports['default'] = Card;
 module.exports = exports['default'];
-//# sourceMappingURL=card.js.map
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./util.js":5,"hammerjs":6,"raf":71,"rebound":73,"sister":74,"vendor-prefix":75}],3:[function(require,module,exports){
 (function (global){
@@ -584,7 +583,6 @@ global.gajus.Swing = {
 
 exports.Stack = _stack2['default'];
 exports.Card = _card2['default'];
-//# sourceMappingURL=index.js.map
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./card":2,"./stack":4}],4:[function(require,module,exports){
 'use strict';
@@ -726,7 +724,6 @@ Stack = function (config) {
 
 exports['default'] = Stack;
 module.exports = exports['default'];
-//# sourceMappingURL=stack.js.map
 },{"./card":2,"./util":5,"rebound":73,"sister":74}],5:[function(require,module,exports){
 'use strict';
 
@@ -789,7 +786,6 @@ util.isTouchDevice = function () {
 
 exports['default'] = util;
 module.exports = exports['default'];
-//# sourceMappingURL=util.js.map
 },{"lodash/array/remove":8,"lodash/collection/find":10,"lodash/collection/where":11,"lodash/number/random":64,"lodash/object/assign":65}],6:[function(require,module,exports){
 /*! Hammer.JS - v2.0.6 - 2015-12-23
  * http://hammerjs.github.io/

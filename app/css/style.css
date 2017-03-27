@@ -27,9 +27,9 @@ font import
 Navbar CSS
 ================================================================================*/
 
-#navBackground {
+/*#navBackground {
     background-color: black;
-}
+}*/
 
 #navbarTitle {
     font-style: italic;
@@ -45,17 +45,17 @@ Navbar CSS
     margin-right: 10%;
 }
 
-<<<<<<< HEAD
+
 .navbar-inverse .navbar-nav > li > a{
   color: #10EE2E;
   font-size: 18px;
+}
 
 
-=======
 .navbar-inverse .navbar-nav>li>a {
     color: #10EE2E;
     font-size: 18px;
->>>>>>> 238d14c78a7a0b7b8ad92db15d7e7e8655aec54e
+
 }
 
 
@@ -73,28 +73,7 @@ body {
     font-family: 'lemon';
     font-weight: bold;
 }
-<<<<<<< HEAD
-#GifSearch{
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
-}
-#GifMain{
-  width: 45vw;
-  /*height: 40vh;*/
-}
-#to-copy{
-  font-size: 12px;
-  width: 250px;
-  border-radius: 5px;
-  border: black;
-  background-color: grey ;
-}
-#btnCopy{
-  border-radius: 20px;
-  background-color: grey;
-  color: #F123B3;
-=======
+
 
 #GifSearch {
     width: 40px;
@@ -121,7 +100,7 @@ body {
     border-radius: 20px;
     background-color: grey;
     color: #F123B3;
->>>>>>> 238d14c78a7a0b7b8ad92db15d7e7e8655aec54e
+
 }
 
 
@@ -130,17 +109,18 @@ body CSS
 ================================================================================*/
 
 #btLike {
-  margin-left: 4vw;
+  /*margin-left: 10%;*/
   margin-top: 9vw;
-  height: 7vw;
-  border-radius: 10vw;
+  height: 130px;
+  width: 245px;
+  border-radius: 25px;
 }
 
 #btDislike {
-  margin-left: -7vw;
+  /*margin-left: -7vw;*/
       margin-top: 8vw;
-      height: 8vw;
-      border-radius: 6vw;
+
+      border-radius: 25px;
 }
 
 #partGif {
@@ -175,16 +155,12 @@ h2{
   #GifMain{
     width: 100vw;
     /*height: 40vh;*/
-  }
 
-=======
->>>>>>> 238d14c78a7a0b7b8ad92db15d7e7e8655aec54e
-}
 /*================================================================================
 @media screen mobile
 ================================================================================*/
 
-@media screen and (min-width: 992px) and (max-width: 1500px) {
+/*@media screen and (min-width: 992px) and (max-width: 1500px) {*/
     /*  #btDislike{
     margin-left: 5vw;
   }
