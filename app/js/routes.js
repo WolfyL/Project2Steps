@@ -82,6 +82,15 @@ angular.module('app')
                         controller: 'ProfileController'
                     }
                 }
+            })
+            .state('anon.history', {
+                url: '/history',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/history.html',
+                        controller: 'HistoryController'
+                    }
+                }
             });
         $urlRouterProvider.otherwise('/');
     });
