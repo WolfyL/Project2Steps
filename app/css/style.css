@@ -101,15 +101,15 @@ body CSS
 #btLike {
   margin-left: 4vw;
   margin-top: 9vw;
-  height: 10vw;
+  height: 7vw;
   border-radius: 10vw;
 }
 
 #btDislike {
-    margin-left: -10vw;
-    margin-top: 8vw;
-    height: 11vw;
-    border-radius: 6vw
+  margin-left: -7vw;
+      margin-top: 8vw;
+      height: 8vw;
+      border-radius: 6vw;
 }
 
 #partGif {
