@@ -7,11 +7,6 @@ angular.module('app')
             $scope.all = res.data;
         });
 
-        // GifService.getLucky().then(function(res) {
-        //     $scope.lucky = res.data;
-        //     console.log($scope.lucky);
-        // });
-
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
