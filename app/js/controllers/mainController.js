@@ -3,7 +3,7 @@ angular.module('app')
         var n = 0;
 
 
-        function ramdonGif() {
+        function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
@@ -41,14 +41,14 @@ angular.module('app')
             VoteService.updateDislike($scope.gifId, +1).then(function(res) {
             });
 
-            ramdonGif();
+            randomGif();
         };
 
         $scope.addLike = function() {
             VoteService.updateLike($scope.gifId, +1).then(function(res) {
             });
 
-            ramdonGif();
+            randomGif();
         };
-        ramdonGif();
+        randomGif();
     });
