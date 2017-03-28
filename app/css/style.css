@@ -1,4 +1,4 @@
-            /*================================================================================
+/*================================================================================
 font import
 ================================================================================*/
 
@@ -16,75 +16,117 @@ font import
             font-family: 'bowlbyone';
             src: url('/fonts/BowlbyOne-Regular.ttf');
         }
-        /*================================================================================
+/*================================================================================
 font import
 ================================================================================*/
-        /*================================================================================
+/*================================================================================
 Navbar CSS
 ================================================================================*/
 
-        #navBackground {
-            background-color: black;
-        }
 
-        #navbarTitle {
-            font-style: italic;
-            font-size: 30px;
-            color: #F123B3;
-            border-bottom: 2px solid #10EE2E;
-            padding-left: 0px;
-            padding-right: 50px;
-            margin-left: 25%;
-        }
+#navBackground {
+    background-color: black;
+}
 
-        .navbar-inverse .navbar-nav {
-            margin-right: 10%;
-        }
+#navbarTitle {
+    font-style: italic;
+    font-size: 30px;
+    color: #F123B3;
+    border-bottom: 2px solid #10EE2E;
+    padding-left: 0px;
+    padding-right: 50px;
+    margin-left: 25%;
+}
 
-        .navbar-inverse .navbar-nav>li>a {
-            color: #10EE2E;
-            font-size: 18px;
-        }
-        /*================================================================================
+.navbar-inverse .navbar-nav {
+    margin-right: 10%;
+}
+
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #10EE2E;
+  font-size: 18px;
+}
+
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #10EE2E;
+    font-size: 18px;
+
+}
+/*================================================================================
 Navbar CSS
 ================================================================================*/
-        /*================================================================================
+/*================================================================================
 body CSS
 ================================================================================*/
 
-        body {
-            background-color: black;
-            font-family: 'lemon';
-            font-weight: bold;
-        }
 
-        #GifSearch {
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-            margin-left: 20vw;
-            position: fixed;
-        }
+body {
+    background-color: black;
+    font-family: 'lemon';
+    font-weight: bold;
+}
 
-        #GifMain {
-            width: 45vw;
-            max-height: 600px;
-        }
 
-        #to-copy {
-            font-size: 12px;
-            width: 250px;
-            border-radius: 5px;
-            border: black;
-            background-color: grey;
-        }
+#GifSearch {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-left: 20vw;
+    position: fixed;
+}
 
-        #btnCopy {
-            border-radius: 20px;
-            background-color: grey;
-            color: #F123B3;
-        }
-        /*================================================================================
+#GifMain {
+    width: 45vw;
+    max-height: 600px;
+}
+
+#to-copy {
+    font-size: 12px;
+    width: 250px;
+    border-radius: 5px;
+    border: black;
+    background-color: grey;
+}
+
+#btnCopy {
+    border-radius: 20px;
+    background-color: grey;
+    color: #F123B3;
+
+}
+
+
+/*================================================================================
+body CSS
+================================================================================*/
+
+#btLike {
+  /*margin-left: 10%;*/
+  margin-top: 9vw;
+  height: 130px;
+  width: 245px;
+  border-radius: 25px;
+}
+
+#btDislike {
+  /*margin-left: -7vw;*/
+      margin-top: 8vw;
+
+      border-radius: 25px;
+}
+
+#partGif {
+    margin-top: 8vw;
+}
+h2{
+  color: #F123B3;
+
+}
+
+
+/*================================================================================
 body CSS
 ================================================================================*/
 
@@ -168,7 +210,8 @@ body CSS
 
         }
 
-        /*================================================================================
+/*================================================================================
+
 @media screen mobile
 ================================================================================*/
         /*@media  screen and (min-width: 320px) and (max-width: 991px){
@@ -177,13 +220,31 @@ body CSS
     font-size: 20px;
     margin-left: 10px;
   }
-}
+
+  .navbar-inverse .navbar-nav {
+    margin-right: 0;
+  }
+
+  .navbar-inverse .navbar-nav > li > a{
+
+    text-align: right;
+
+  }
+  #GifMain{
+    width: 100vw;
+    /*height: 40vh;*/
+
 /*================================================================================
 @media screen mobile
 ================================================================================*/
 
+
+/*@media screen and (min-width: 992px) and (max-width: 1500px) {*/
+    /*  #btDislike{
+=======
         @media screen and (min-width: 992px) and (max-width: 1500px) {
             /*  #btDislike{
+
     margin-left: 5vw;
   }
   #btLike{
