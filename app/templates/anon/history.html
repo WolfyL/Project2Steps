@@ -1,13 +1,10 @@
 <form id="logHistory">
-    <fieldset>
 
-        <input type="email" placeholder="email" name="usermail"><button id="btMail" type="button" name="button">Change my mail</button><br>
-
-        <input type="password" placeholder="Password" id="password" required>
-        <input type="password" placeholder="Confirm Password" id="confirm_password" required>
-
+    <input type="email" placeholder="Change my mail" name="usermail">
+    <input id="password" data-ng-model='user.password' type="password" name='password' placeholder='password' required>
+    <input id="confirm_password" data-ng-model='user.password_verify' type="password" name='confirm_password' placeholder='confirm password' required data-password-verify="user.password">
         <button type="submit" class="pure-button pure-button-primary">Confirm</button>
-    </fieldset>
+
 </form>
 
 
