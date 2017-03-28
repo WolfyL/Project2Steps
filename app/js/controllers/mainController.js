@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService, $location) {
+    .controller('MainController', function($scope, GifService, $location, VoteService) {
         var n = 0;
         $scope.getSearch = [];
         $scope.lucky = [];
@@ -7,10 +7,19 @@ angular.module('app')
             $scope.all = res.data;
         });
 
-        GifService.getLucky().then(function(res) {
-            $scope.lucky = res.data;
-            console.log($scope.lucky);
-        });
+        // GifService.getLucky().then(function(res) {
+        //     $scope.lucky = res.data;
+        //     console.log($scope.lucky);
+        // });
+
+        function randomGif() {
+            GifService.getLucky().then(function(res) {
+                $scope.lucky = res.data.data.image_url;
+                $scope.gifId = res.data.data.id;
+                console.log($scope.gifId);
+                console.log($scope.lucky);
+            });
+        }
 
         $scope.addNumber = function() {
             n = $scope.number;
@@ -45,7 +54,6 @@ angular.module('app')
         $scope.next = function() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data;
-                // console.log($scope.lucky);
             });
         };
 
@@ -59,4 +67,18 @@ angular.module('app')
                 console.log($scope.getSearch);
             });
         };
+        $scope.addDislike = function() {
+            VoteService.updateDislike($scope.gifId, +1).then(function(res) {
+            });
+
+            randomGif();
+        };
+
+        $scope.addLike = function() {
+            VoteService.updateLike($scope.gifId, +1).then(function(res) {
+            });
+
+            randomGif();
+        };
+        randomGif();
     });
