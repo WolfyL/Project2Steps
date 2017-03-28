@@ -50,6 +50,15 @@ angular.module('app')
                         controller: 'RegisterController'
                     }
                 }
+            })
+            .state('anon.search', {
+                url: '/search/:query',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/search.html',
+                        controller: 'SearchController'
+                    }
+                }
             });
         $stateProvider
             .state('user', {
@@ -80,6 +89,15 @@ angular.module('app')
                     'content@': {
                         templateUrl: 'user/profile.html',
                         controller: 'ProfileController'
+                    }
+                }
+            })
+            .state('anon.history', {
+                url: '/history',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/history.html',
+                        controller: 'HistoryController'
                     }
                 }
             });
