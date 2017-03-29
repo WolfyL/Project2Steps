@@ -22,6 +22,17 @@ angular.module('app')
                     }
                 }
             })
+
+            .state('anon.main', {
+                url: '/main',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/main.html',
+                        controller: 'MainController'
+                    }
+                }
+            })
+
             .state('anon.login', {
                 url: '/login',
                 views: {
@@ -37,6 +48,15 @@ angular.module('app')
                     'content@': {
                         templateUrl: 'anon/register.html',
                         controller: 'RegisterController'
+                    }
+                }
+            })
+            .state('anon.search', {
+                url: '/search/:query',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/search.html',
+                        controller: 'SearchController'
                     }
                 }
             });
@@ -69,6 +89,15 @@ angular.module('app')
                     'content@': {
                         templateUrl: 'user/profile.html',
                         controller: 'ProfileController'
+                    }
+                }
+            })
+            .state('anon.history', {
+                url: '/history',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/history.html',
+                        controller: 'HistoryController'
                     }
                 }
             });
