@@ -188,9 +188,13 @@ body CSS
           width: 12vw;
           float: left;
         }
+        #urlGif{
+          height: 6vw;
+        }
         #left-box-history{
           float: right;
           margin: 2vw;
+          margin-top: -5vw;
           font-size: 0.9vw;
           color: #F123B3;
           list-style-type: none;
@@ -202,12 +206,12 @@ body CSS
           float: right;
         }
         #right-box-history{
-          float: left;
+          float: right;
           margin: 2vw;
+          margin-top: -5vw;
           font-size: 0.9vw;
           color: #F123B3;
           list-style-type: none;
-
         }
 
 /*================================================================================
