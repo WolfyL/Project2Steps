@@ -34,9 +34,6 @@ angular.module('app')
         };
 
 
-
-        // };
-
         $scope.copy = function() {
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
