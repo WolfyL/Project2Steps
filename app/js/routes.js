@@ -97,7 +97,7 @@ angular.module('app')
                 views: {
                     'content@': {
                         templateUrl: 'anon/history.html',
-                        controller: 'MainController'
+                        controller: 'HistoryController'
                     }
                 }
             });

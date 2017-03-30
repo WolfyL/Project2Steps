@@ -179,33 +179,17 @@ body CSS
 
         #colHistory {
             height: 8vw;
-            border-bottom: 1px solid #10EE2E;
+            border-right: 1px solid #10EE2E;
+            border-left: 1px solid #10EE2E;
             margin-top: 3vw;
         }
 
-        #left-box{
-          height: 8vw;
-          width: 12vw;
-          float: left;
-        }
         #urlGif{
-          height: 6vw;
+          height: 7vw;
+          margin-left: 8vw;
         }
-        #left-box-history{
-          float: right;
-          margin: 2vw;
-          margin-top: -5vw;
-          font-size: 0.9vw;
-          color: #F123B3;
-          list-style-type: none;
-        }
-
-        #right-box{
-          height: 8vw;
-          width: 12vw;
-          float: right;
-        }
-        #right-box-history{
+        
+        #box-history{
           float: right;
           margin: 2vw;
           margin-top: -5vw;
