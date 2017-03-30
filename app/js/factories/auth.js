@@ -54,11 +54,7 @@ angular.module('app')
                     token = LocalService.get('auth_token');
                 }
                 if (token) {
-                    var regex = /api.giphy.com/i;
-                    if (!regex.test(config.url)) {
-                        config.headers.authorization = token;
-                    }
-
+                    config.headers.authorization = token;
                 }
                 return config;
             },
