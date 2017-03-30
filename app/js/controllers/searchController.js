@@ -17,6 +17,7 @@ angular.module('app')
                 var i = Math.floor(Math.random(0, res.data.data.length) * 100);
                 $scope.getSearch = res.data.data[i];
                 $scope.gifId = res.data.data[i].id;
+                VoteService.getOne($scope.gifId).then(function(res) {});
             });
         }
 
