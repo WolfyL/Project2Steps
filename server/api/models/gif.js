@@ -1,12 +1,23 @@
 import mongoose from 'mongoose';
+import User from './user.js'
 
 const gifSchema = new mongoose.Schema({
-    value: {
-        gif: {type: String, unique: true},
-        like: [{user :{type: String, unique: true}, copy: [{type:Date, default: Date.now}]}],
-        dislike: [{user :{type: String, unique: true}, copy: [{type:Date, default: Date.now}]}],
-        
-    }
+
+        gif: {
+            type: String,
+        },
+        like: [{
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'User'
+            }
+        }],
+        dislike: [{
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'User'
+            }
+        }]
 });
 
 let model = mongoose.model('Gif', gifSchema);
@@ -16,7 +27,7 @@ export default class Gif {
     findAll(req, res) {
         model.find({}, (err, gifs) => {
             if (err || !gifs) {
-                res.sendStatus(403);
+                res.send('Nope!');
             } else {
                 res.json(gifs);
             }
@@ -24,9 +35,9 @@ export default class Gif {
     }
 
     findById(req, res) {
-        model.findById(req.params.id, (err, gif) => {
+        model.findOneAndUpdate({gif:req.params.id},{gif:req.params.id},{upsert:true}, (err, gif) => {
             if (err || !gif) {
-                res.sendStatus(403);
+                res.send('Nope!');
             } else {
                 res.json(gif);
             }
@@ -45,7 +56,8 @@ export default class Gif {
     }
 
     update(req, res) {
-        model.findByIdAndUpdate(req.params.id, req.body, (err, gif) => {
+        model.update({gif:req.params.id}, req.body, (err, gif)=> {
+          console.log(req.body);
             if (err || !gif) {
                 res.status(500).send(err.message);
             } else {

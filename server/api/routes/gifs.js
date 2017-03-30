@@ -5,6 +5,7 @@ import Auth from '../middlewares/authorization.js';
 let router = express.Router();
 
 module.exports = (app) => {
+
     var gif = new Gif();
 
     router.get('/', gif.findAll);
