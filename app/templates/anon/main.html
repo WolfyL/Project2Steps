@@ -1,29 +1,44 @@
-<div class="container">
+<div class="container-fluid black">
     <div class="row">
+
         <div class="col-xs-offset-10 col-xs-1">
-            <a href="#">recherche<img src="" alt=""></a>
+            <img ng-click='loupe()' id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt="">
+              <!-- <img src="{{getSearch.images.downsized.url}}" alt=""> -->
+            <!-- <input ng-model='search'><button ng-click='goSearch()'>Go</button> -->
+
+        </div>
+    </div>
+
+    <div class="row" id="partGif">
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-offset-0 col-xs-1 col-lg-offset-4 col-lg-1 ">
+                    <a ng-click="addDislike()"><img id="btDislike" src="http://media4.giphy.com/media/snEoxV8grx3by/giphy-downsized.gif" /></a>
+                </div>
+            </div>
+        </div>
+        <div class=" col-xs-6 " align="center">
+            <img src="{{lucky}}" alt="" id="GifMain">
+        </div>
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-offset-0 col-xs-1 col-lg-offset-1 col-lg-1">
+                    <a ng-click="addLike()"><img id="btLike" src="https://media3.giphy.com/media/14cilFdQzr8hG0/100.gif" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6" align="center">
+            <p>like/dislike</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-offset-2 col-xs-2">
-            <a href="#">dislike<img src="" alt=""></a>
+        <div class="col-xs-offset-3 col-xs-6" align="center">
+            <input type="text" id='to-copy' value="{{lucky}}">
+            <button id="btnCopy" class="btn" ng-click='copy()'>Copy</button>
         </div>
-        <div class="col-xs-4">
-            <img src="" alt="">
-        </div>
-        <div class="col-xs-2">
-            <a href="#">like<img src="" alt=""></a>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-offset-4 col-xs-4">
-        <p>like/dislike</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-offset-4 col-xs-4">
-        <p>copie</p><input type="text" name="copy" value="">
-      </div>
 
     </div>
 
