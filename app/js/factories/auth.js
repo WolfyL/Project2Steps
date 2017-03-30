@@ -58,7 +58,6 @@ angular.module('app')
                     if (!regex.test(config.url)) {
                         config.headers.authorization = token;
                     }
-
                 }
                 return config;
             },

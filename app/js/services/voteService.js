@@ -2,25 +2,23 @@ angular.module('app')
     .service('VoteService', function($http) {
         return {
             getInformation: function(id) {
-                return $http.get('/gifs/' + id);
+                return $http.get('/gif/' + id);
             },
             getOne: function(id) {
-                return $http.get('/gifs/' + id);
+                return $http.get('/users/' + id);
             },
-            create: function(gif) {
-                return $http.post('/gifs', {gif:gif});
+            updateLike: function(id, like) {
+              console.log(id, "like");
+              console.log(like, "like");
+                return $http.put('/gif/' + id, like);
             },
-            updateLike: function(id, userId) {
-                return $http.put('/gifs/' +id, {like:[{user:userId}]});
-            },
-            updateDislike: function(id, userId) {
-                return $http.put('/gifs/' + id, {dislike:[{user:userId}]});
-            },
-            updateCopy: function(id, userId) {
-                return $http.put('/gifs/' + id, {vote:[{user:userId}]});
+            updateDislike: function(id, dislike) {
+              console.log(id,"dislike");
+              console.log(dislike, "dislike");
+                return $http.put('/gif/' + id, dislike);
             },
             delete: function(id) {
-                return $http.delete('/gifs/' + id);
+                return $http.delete('/users/' + id);
             }
         };
     });
