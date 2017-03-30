@@ -12,9 +12,9 @@ angular.module('app')
         $scope.lucky = [];
 
         $scope.modalShown = false;
-        $scope.toggleModal = function() {
-            $scope.modalShown = !$scope.modalShown;
-        };
+        // $scope.toggleModal = function() {
+        //     $scope.modalShown = !$scope.modalShown;
+        // };
 
         $scope.loupe = function () {
           $scope.modalShown = !$scope.modalShown;
@@ -61,8 +61,6 @@ angular.module('app')
 
             themeGif();
         };
-        // themeGif();
-
 
 
         $scope.goSearch = function() {

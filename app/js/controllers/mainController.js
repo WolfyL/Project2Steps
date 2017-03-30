@@ -1,5 +1,4 @@
 angular.module('app')
-
     .controller('MainController', function($scope, GifService, VoteService, $location) {
 
         var n = 0;
