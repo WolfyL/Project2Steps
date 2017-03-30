@@ -6,9 +6,6 @@ let router = express.Router();
 
 module.exports = (app) => {
 
-    app.get('/token_status', Auth.hasAuthorization, (req, res, next) => {
-        res.sendStatus(200);
-    });
 
     var user = new User();
 
@@ -18,7 +15,7 @@ module.exports = (app) => {
 
     router.get('/:id', Auth.isAdministrator, user.findById);
 
-    router.post('/', user.create);
+    router.post('/', Auth.isAdministrator,user.create);
 
     router.put('/:id', Auth.isAdministrator, user.update);
 

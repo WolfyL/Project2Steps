@@ -25,7 +25,14 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    copy: [{
+        gifId: {
+            type: String,
+            }
+    }]
+
+
 });
 
 userSchema.methods.comparePassword = function(pwd, cb) {
