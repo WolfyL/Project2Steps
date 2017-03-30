@@ -68,6 +68,10 @@ body {
     font-weight: bold;
 }
 
+h3{
+    text-align: center;
+    color: #00EEEE;
+}
 
 #GifSearch {
     width: 40px;

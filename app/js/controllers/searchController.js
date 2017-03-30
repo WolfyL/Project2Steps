@@ -1,10 +1,15 @@
 angular.module('app')
     .controller('SearchController', function($scope, GifService, $stateParams, VoteService, $location) {
+      $scope.theme = $stateParams.query;
+      $scope.alert = "";
         console.log($stateParams.query);
         GifService.getSearch($stateParams.query).then(function(res) {
             var i = Math.floor(Math.random(0, res.data.data.length) * 100);
             $scope.getSearch = res.data.data[i];
             console.log($scope.getSearch);
+            if($scope.getSearch === undefined){
+              $scope.alert ="Your research got no result bro, try again  INSERT A COIN";
+            }
         });
 
         var n = 0;
