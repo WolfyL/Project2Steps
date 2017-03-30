@@ -18,7 +18,7 @@ angular.module('app')
                 views: {
                     'content@': {
                         templateUrl: 'anon/home.html',
-                        controller: 'MainController'
+                          controller: 'MainController'
                     }
                 }
             })
@@ -59,6 +59,15 @@ angular.module('app')
                         controller: 'SearchController'
                     }
                 }
+            })
+            .state('anon.history', {
+                url: '/history',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/history.html',
+                        controller: 'HistoryController'
+                    }
+                }
             });
         $stateProvider
             .state('user', {
@@ -89,15 +98,6 @@ angular.module('app')
                     'content@': {
                         templateUrl: 'user/profile.html',
                         controller: 'ProfileController'
-                    }
-                }
-            })
-            .state('anon.history', {
-                url: '/history',
-                views: {
-                    'content@': {
-                        templateUrl: 'anon/history.html',
-                        controller: 'HistoryController'
                     }
                 }
             });
