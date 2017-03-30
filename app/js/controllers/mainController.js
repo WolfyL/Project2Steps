@@ -1,75 +1,44 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService, VoteService, $location) {
+    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser) {
 
         var n = 0;
+        var userId = CurrentUser.user()._id;
+        $scope.gifId = "";
         $scope.getSearch = [];
         $scope.lucky = [];
-
+        $scope.search = {
+            saisie: ""
+        };
         $scope.modalShown = false;
-        $scope.toggleModal = function() {
-            $scope.modalShown = !$scope.modalShown;
-        };
 
-        $scope.loupe = function () {
-          $scope.modalShown = !$scope.modalShown;
-        };
-
-        $scope.search = {saisie:""};
-        $scope.launchSearch = function(){
-          var saisie = $scope.search.saisie;
-          console.log('saisie', saisie);
-          if (saisie !== undefined) {
-              console.log(saisie);
-              $location.path('/search/' + saisie);
-          }
-        };
 
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                console.log($scope.gifId);
-                console.log($scope.lucky);
+                VoteService.getOne($scope.gifId).then(function(res) {});
             });
         }
 
 
-
-        $scope.addNumber = function() {
-            n = $scope.number;
-            GifService.getX(n).then(function(res) {
-                $scope.X = res.data;
-                console.log($scope.X);
-            });
+        $scope.toggleModal = function() {
+            $scope.modalShown = !$scope.modalShown;
         };
 
 
-
-        $scope.copy = function() {
-            var toCopy = document.getElementById('to-copy'),
-                btnCopy = document.getElementById('copy');
-
-            toCopy.select();
-            document.execCommand('copy');
-            return false;
+        $scope.loupe = function() {
+            $scope.modalShown = !$scope.modalShown;
         };
 
 
-        $scope.addDislike = function() {
-            VoteService.updateDislike($scope.gifId, +1).then(function(res) {
-            });
-
-            randomGif();
+        $scope.launchSearch = function() {
+            var saisie = $scope.search.saisie;
+            console.log('saisie', saisie);
+            if (saisie !== undefined) {
+                console.log(saisie);
+                $location.path('/search/' + saisie);
+            }
         };
-
-        $scope.addLike = function() {
-            VoteService.updateLike($scope.gifId, +1).then(function(res) {
-            });
-
-            randomGif();
-        };
-        randomGif();
-
 
 
         $scope.goSearch = function() {
@@ -79,8 +48,33 @@ angular.module('app')
                 var i = Math.floor(Math.random(0, 101) * 100);
                 console.log(i);
                 $scope.getSearch = res.data.data[i];
+                $scope.gifId = res.data.data[i].id;
                 console.log($scope.getSearch);
             });
         };
+
+
+        $scope.copy = function() {
+            var toCopy = document.getElementById('to-copy'),
+                btnCopy = document.getElementById('copy');
+            toCopy.select();
+            document.execCommand('copy');
+            return false;
+        };
+
+
+        $scope.addDislike = function() {
+            VoteService.updateDislike($scope.gifId, userId).then(function(res) {
+                randomGif();
+            });
+        };
+
+        $scope.addLike = function() {
+            VoteService.updateLike($scope.gifId, userId).then(function(res) {
+                randomGif();
+            });
+        };
+
+        randomGif();
 
     });
