@@ -1,1 +1,49 @@
-<img src="{{getSearch.images.downsized.url}}" alt="">
+<div class="container-fluid black">
+    <div class="row">
+        <div class="col-xs-offset-8 col-xs-1">
+            <img ng-click='loupe()' id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt="">
+            <!-- <button ng-click='toggleModal()'>Open Modal Dialog</button> -->
+            <modal-dialog show='modalShown' width='800px' height='60%'>
+              <input ng-model="search.saisie"></input><button type="button" ng-click="launchSearch()">Go!</button>
+                <p>{{alert}}<p>
+                  <img src="http://media4.giphy.com/media/SW6C2nImYUVKU/giphy.gif" alt="">
+            </modal-dialog>
+        </div>
+    </div>
+    <h3>*{{theme}}*</h3>
+    <div class="row" id="partGif">
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-offset-0 col-xs-1 col-lg-offset-4 col-lg-1 ">
+                    <a ng-click="addDislike()"><img id="btDislike" src="http://media4.giphy.com/media/snEoxV8grx3by/giphy-downsized.gif" /></a>
+                </div>
+            </div>
+        </div>
+        <div class=" col-xs-6 " align="center">
+
+            <img ng-if="getSearch != undefined" src="{{getSearch.images.downsized.url}}" alt="" id="GifMain">
+            <p ng-if="getSearch == undefined">Aucun résultat</p>
+        </div>
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-offset-0 col-xs-1 col-lg-offset-1 col-lg-1">
+                    <a ng-click="addLike()"><img id="btLike" src="https://media3.giphy.com/media/14cilFdQzr8hG0/100.gif" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6" align="center">
+            <p>like/dislike</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6" align="center">
+            <input type="text" id='to-copy' value="{{getSearch.images.downsized.url}}">
+            <button id="btnCopy" class="btn" ng-click='copy()'>Copy</button>
+        </div>
+
+    </div>
+
+</div>

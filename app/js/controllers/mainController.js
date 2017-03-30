@@ -1,14 +1,30 @@
 angular.module('app')
     .controller('MainController', function($scope, GifService, VoteService, $location,UserService, CurrentUser) {
-
         var n = 0;
         var userId = CurrentUser.user()._id;
         $scope.getSearch = [];
         $scope.lucky = [];
 
-        UserService.getAll().then(function(res){
 
-        });
+        $scope.modalShown = false;
+        $scope.toggleModal = function() {
+            $scope.modalShown = !$scope.modalShown;
+        };
+
+        $scope.loupe = function () {
+          $scope.modalShown = !$scope.modalShown;
+        };
+
+        $scope.search = {saisie:""};
+        $scope.launchSearch = function(){
+          var saisie = $scope.search.saisie;
+          console.log('saisie', saisie);
+          if (saisie !== undefined) {
+              console.log(saisie);
+              $location.path('/search/' + saisie);
+          }
+        };
+
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
@@ -69,7 +85,7 @@ angular.module('app')
 
 
         $scope.goSearch = function() {
-            search = $scope.search;
+            search = $scope.search.saisie;
             console.log(search);
             GifService.getSearch(search).then(function(res) {
                 var i = Math.floor(Math.random(0, 101) * 100);
