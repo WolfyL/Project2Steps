@@ -1,26 +1,31 @@
 angular.module('app')
+    .controller('MainController', function($scope, GifService, VoteService, $location,UserService, CurrentUser) {
 
-    .controller('MainController', function($scope, GifService, VoteService, $location) {
         var n = 0;
+        var userId = CurrentUser.user()._id;
         $scope.getSearch = [];
         $scope.lucky = [];
 
+        UserService.getAll().then(function(res){
+
+        });
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
                 console.log($scope.gifId);
-                console.log($scope.lucky);
+                VoteService.getOne($scope.gifId).then(function(res){
+                  console.log(res.data);
+                });
+
             });
         }
-
 
 
         $scope.addNumber = function() {
             n = $scope.number;
             GifService.getX(n).then(function(res) {
                 $scope.X = res.data;
-                console.log($scope.X);
             });
         };
 
@@ -34,9 +39,6 @@ angular.module('app')
         };
 
 
-
-        // };
-
         $scope.copy = function() {
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
@@ -44,24 +46,26 @@ angular.module('app')
             toCopy.select();
             document.execCommand('copy');
             return false;
+            
         };
 
 
         $scope.addDislike = function() {
-            VoteService.updateDislike($scope.gifId, +1).then(function(res) {
-            });
+          VoteService.updateDislike($scope.gifId, userId).then(function(res){
 
             randomGif();
+          });
         };
+
 
         $scope.addLike = function() {
-            VoteService.updateLike($scope.gifId, +1).then(function(res) {
-            });
+          VoteService.updateLike($scope.gifId, userId).then(function(res){
 
             randomGif();
-        };
-        randomGif();
+          });
 
+
+        };
 
 
         $scope.goSearch = function() {
@@ -74,5 +78,11 @@ angular.module('app')
                 console.log($scope.getSearch);
             });
         };
+
+
+        randomGif();
+
+
+
 
     });

@@ -1,17 +1,23 @@
 import mongoose from 'mongoose';
+import User from './user.js'
 
 const gifSchema = new mongoose.Schema({
+
         gif: {
             type: String,
         },
+        _id: false ,
+        id: false,
         like: [{
             user: {
-                type: String
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'User'
             }
         }],
         dislike: [{
             user: {
-                type: String
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'User'
             }
         }]
 });
@@ -32,7 +38,6 @@ export default class Gif {
 
     findById(req, res) {
         model.findOneAndUpdate({gif:req.params.id},{gif:req.params.id},{upsert:true}, (err, gif) => {
-          console.log(gif, err);
             if (err || !gif) {
                 res.send('Nope!');
             } else {
