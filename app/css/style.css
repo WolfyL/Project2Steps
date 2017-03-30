@@ -19,11 +19,10 @@ font import
 /*================================================================================
 font import
 ================================================================================*/
+
 /*================================================================================
 Navbar CSS
 ================================================================================*/
-
-
 #navBackground {
     background-color: black;
 }
@@ -130,6 +129,35 @@ h2{
 }
 
 
+
+#GifSearch {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-left: 20vw;
+    position: fixed;
+}
+
+#GifMain {
+    width: 45vw;
+    max-height: 600px;
+}
+
+#to-copy {
+    font-size: 12px;
+    width: 250px;
+    border-radius: 5px;
+    border: black;
+    background-color: grey;
+}
+
+#btnCopy {
+    border-radius: 20px;
+    background-color: grey;
+    color: #F123B3;
+
+}
+
 /*================================================================================
 body CSS
 ================================================================================*/
@@ -192,7 +220,7 @@ body CSS
           height: 7vw;
           margin-left: 8vw;
         }
-        
+
         #box-history{
           float: right;
           margin: 2vw;
@@ -207,6 +235,7 @@ body CSS
 @media screen mobile
 ================================================================================*/
         /*@media  screen and (min-width: 320px) and (max-width: 991px){
+
 
   #navbarTitle {
     font-size: 20px;

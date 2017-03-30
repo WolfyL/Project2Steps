@@ -2,10 +2,18 @@ angular.module('app')
     .service('VoteService', function($http) {
         return {
             getInformation: function(id) {
-                return $http.get('/gif/' + id);
+                return $http.get('/gifs/' + id);
             },
             getOne: function(id) {
-                return $http.get('/users/' + id);
+                return $http.get('/gifs/' + id);
+            },
+            getAll: function() {
+                return $http.get('/gifs');
+            },
+            createGif: function(gif){
+              console.log(gif);
+              return $http.post('/gifs/',gif);
+
             },
             updateLike: function(id, like) {
               console.log(id, "like");

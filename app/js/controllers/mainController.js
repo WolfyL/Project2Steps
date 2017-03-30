@@ -31,8 +31,12 @@ angular.module('app')
                 console.log($scope.gifId);
                 console.log($scope.lucky);
             });
+            VoteService.getOne($scope.gifId).then(function(res) {
+                if (res.sendStatus(403)) {
+                    VoteService.create($scope.gifId).then(function(res) {});
+                }
+            });
         }
-
 
 
         $scope.addNumber = function() {
@@ -43,6 +47,14 @@ angular.module('app')
             });
         };
 
+
+        $scope.loupe = function PromptMessage() {
+            var saisie = prompt("Saisissez votre texte :", "");
+            if (saisie !== null) {
+                console.log(saisie);
+                $location.path('/search/' + saisie);
+            }
+        };
 
 
         $scope.copy = function() {
