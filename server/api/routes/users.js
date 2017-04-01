@@ -20,6 +20,8 @@ module.exports = (app) => {
 
     router.post('/', user.create);
 
+    router.put('/vote/', Auth.isAdministrator, user.update);
+
     router.put('/:id', Auth.isAdministrator, user.update);
 
     router.delete('/:id', Auth.isAdministrator, user.delete);

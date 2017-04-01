@@ -1,11 +1,18 @@
 angular.module('app')
-    .service('VoteService', function($http) {
+    .service('VoteService', function($http, $sce) {
         return {
-            getInformation: function(id) {
-                return $http.get('/gifs/' + id);
+            getUser: function(id, userId) {
+                console.log('reaquete commencée');
+                return $http.get('/gifs/vote', {
+                    params: {
+                        gif: id,
+                        user: userId
+                    }
+                });
             },
 
             getOne: function(id) {
+                console.log(id);
                 return $http.get('/gifs/' + id);
             },
 
@@ -17,21 +24,17 @@ angular.module('app')
 
             },
             updateLike: function(id, userId) {
-                return $http.put('/gifs/' + id, {
-                    like: [{
-                        user: userId
-                    }]
+                return $http.put('/gifs/like/' + id, {
+                    user: userId
                 });
             },
 
             updateDislike: function(id, userId) {
-                return $http.put('/gifs/' + id, {
-                    dislike: [{
-                        user: userId
-                    }]
+                return $http.put('/gifs/dislike/' + id, {
+                    user: userId
                 });
             },
-            
+
             delete: function(id) {
                 return $http.delete('/users/' + id);
             }

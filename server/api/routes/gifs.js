@@ -10,11 +10,15 @@ module.exports = (app) => {
 
     router.get('/', gif.findAll);
 
+    router.get('/vote', gif.findUser);
+
     router.get('/:id', gif.findById);
 
     router.post('/', gif.create);
 
-    router.put('/:id', gif.update);
+    router.put('/like/:id', gif.likeUpdate);
+
+    router.put('/dislike/:id', gif.dislikeUpdate);
 
     router.delete('/:id', gif.delete);
 

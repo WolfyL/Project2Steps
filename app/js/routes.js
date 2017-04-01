@@ -17,7 +17,7 @@ angular.module('app')
                 url: '/',
                 views: {
                     'content@': {
-                        templateUrl: 'anon/home.html',
+                        templateUrl: 'anon/main.html',
                           controller: 'MainController'
                     }
                 }
@@ -66,7 +66,7 @@ angular.module('app')
                 url: '/user',
                 views: {
                     'navbar@': {
-                        templateUrl: 'user/navbar.html',
+                        templateUrl: 'anon/navbar.html',
                         controller: 'NavbarController'
                     }
                 },

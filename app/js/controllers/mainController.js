@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser) {
+    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser, UserService) {
 
         var n = 0;
         var userId = CurrentUser.user()._id;
@@ -12,13 +12,31 @@ angular.module('app')
         $scope.modalShown = false;
 
 
+        function verif() {
+            VoteService.getUser($scope.gifId, userId).then(function(res) {
+                $scope.isVote = function() {
+                    if (res.data) {
+                        return true;
+                    }
+                };
+            });
+        }
+
+
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                VoteService.getOne($scope.gifId).then(function(res) {});
+                VoteService.getOne($scope.gifId).then(function(res) {
+                    verif();
+                });
             });
         }
+
+
+        $scope.toNext = function() {
+            randomGif();
+        };
 
 
         $scope.toggleModal = function() {
