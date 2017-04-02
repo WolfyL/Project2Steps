@@ -1,0 +1,17 @@
+
+
+
+<div class="container">
+    <div class="row">
+        <div id="colRank" class="col-xs-6" ng-repeat="gif in gifs | orderBy:'gif.date'">
+            <div class="box">
+              <img id="urlGif" src="{{ gif.url }}">
+            </div>
+            <ul id="box-history">
+                <li> {{ gif.download }}</li>
+                <li>{{ gif.idGif }}</li>
+                <li>{{ gif.date }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

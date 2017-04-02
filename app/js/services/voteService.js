@@ -2,7 +2,6 @@ angular.module('app')
     .service('VoteService', function($http, $sce) {
         return {
             getUser: function(id, userId) {
-                console.log('reaquete commencée');
                 return $http.get('/gifs/vote', {
                     params: {
                         gif: id,
@@ -11,9 +10,13 @@ angular.module('app')
                 });
             },
 
-            getOne: function(id) {
-                console.log(id);
-                return $http.get('/gifs/' + id);
+            getGif: function(id, url) {
+                return $http.get('/gifs/gif', {
+                    params: {
+                        gif: id,
+                        lien: url
+                    }
+                });
             },
 
             getAll: function() {

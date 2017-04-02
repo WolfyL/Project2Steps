@@ -4,6 +4,7 @@ angular.module('app')
         var userId = CurrentUser.user()._id;
         console.log(userId);
         $scope.gifId = "";
+        $scope.gifUrl= "";
         $scope.theme = $stateParams.query;
         $scope.alert = "";
         $scope.getSearch = [];
@@ -29,8 +30,10 @@ angular.module('app')
             GifService.getSearch($stateParams.query).then(function(res) {
                 var i = Math.floor(Math.random(0, res.data.data.length) * 100);
                 $scope.getSearch = res.data.data[i];
+                $scope.gifUrl = res.data.data[i].url;
+                console.log($scope.gifUrl);
                 $scope.gifId = res.data.data[i].id;
-                VoteService.getOne($scope.gifId).then(function(res) {});
+                VoteService.getGif($scope.gifId, $scope.gifUrl).then(function(res) {});
                 verif();
             });
         }
@@ -63,14 +66,12 @@ angular.module('app')
         $scope.copy = function() {
           UserService.copyUpdate(userId, $scope.gifId).then(function(res){
             console.log(res);
-
           });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
             document.execCommand('copy');
             return false;
-
         };
 
 

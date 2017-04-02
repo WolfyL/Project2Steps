@@ -27,7 +27,7 @@ angular.module('app')
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                VoteService.getOne($scope.gifId).then(function(res) {
+                VoteService.getGif($scope.gifId,$scope.lucky).then(function(res) {
                     verif();
                 });
             });

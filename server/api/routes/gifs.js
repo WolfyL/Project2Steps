@@ -8,11 +8,9 @@ module.exports = (app) => {
 
     var gif = new Gif();
 
-    router.get('/', gif.findAll);
+    router.get('/gif', gif.findById);
 
     router.get('/vote', gif.findUser);
-
-    router.get('/:id', gif.findById);
 
     router.post('/', gif.create);
 

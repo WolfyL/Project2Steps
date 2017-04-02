@@ -12,6 +12,7 @@ const gifSchema = new mongoose.Schema({
     gif: {
         type: String,
     },
+    url: {type: String},
     like: [likeSchema],
     dislike: [likeSchema]
 });
@@ -50,9 +51,9 @@ export default class Gif {
     findById(req, res) {
 
         model.findOneAndUpdate({
-            gif: req.params.id
+            gif: req.query.gif, url: req.query.lien
         }, {
-            gif: req.params.id
+            gif: req.query.gif, url: req.query.lien
         }, {
             upsert: true
         }, (err, gif) => {
