@@ -37,10 +37,8 @@ export default class Gif {
         model.findOne({gif: req.query.gif}, (err, gif) => {
           console.log();
             if (err || !gif) {
-              console.log("gif non trouvé");
                 res.status(404);
             } else {
-              console.log("gif trouvé", gif);
 
                 res.json(
                    gif.like.some( user => user.user == req.query.user ) || gif.dislike.some( user => user.user == req.query.user )
@@ -78,11 +76,10 @@ export default class Gif {
     }
 
     likeUpdate(req, res) {
-      let like = req.body;
         model.findOneAndUpdate({
             gif: req.params.id
         }, {$push: {like: {user : req.body.user}}}, (err, gif) => {
-            console.log("like", like.id, req.params.id);
+
             if (err || !gif) {
                 res.status("nope").send(err.message);
             } else {
@@ -91,11 +88,9 @@ export default class Gif {
         });
     }
     dislikeUpdate(req, res) {
-      let like = req.body;
         model.findOneAndUpdate({
             gif: req.params.id
         }, {$push: {dislike: {user : req.body.user}}}, (err, gif) => {
-            console.log("like", like, req.params.id);
             if (err || !gif) {
                 res.status("nope").send(err.message);
             } else {

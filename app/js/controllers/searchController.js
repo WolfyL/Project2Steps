@@ -61,7 +61,8 @@ angular.module('app')
 
 
         $scope.copy = function() {
-          UserService.getCopy(userId, $scope.gifId).then(function(res){
+          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
+            console.log(res);
 
           });
             var toCopy = document.getElementById('to-copy'),

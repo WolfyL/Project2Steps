@@ -20,7 +20,7 @@ module.exports = (app) => {
 
     router.post('/', user.create);
 
-    router.put('/vote/', Auth.isAdministrator, user.update);
+    router.put('/copy/:id', user.copyUpdate);
 
     router.put('/:id', Auth.isAdministrator, user.update);
 
