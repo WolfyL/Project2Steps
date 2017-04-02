@@ -26,14 +26,16 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    copy: [{
-        gif: {
+    vote: [{
+        gifId: {
             type: String
         },
+
         date: {
             type: Date,
             default: Date.now
-        }
+        },
+
     }]
 
 });
@@ -153,12 +155,17 @@ export default class User {
         });
     }
     copyUpdate(req, res) {
-      console.log("copy", req.params, req.body);
         model.findByIdAndUpdate({
-            _id: req.params.id
-        }, {$push: {copy: {gif: req.body.gif}}}, (err, user) => {
+            _id: req.query.user,
+
+        }, {
+            $push: {
+                vote:{gifId: req.query.gif}
+
+            }
+        }, (err, user) => {
             if (err || !user) {
-                res.status('nope').send(err.message);
+                res.status(500).send(err.message);
             } else {
 
                 res.json(user);

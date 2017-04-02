@@ -10,6 +10,7 @@
     "production": "lineman clean build && node production.js"
   },
   "dependencies": {
+    "clipboard": "^1.6.1",
     "express": "",
     "lineman": "~0.37.0",
     "lineman-angular": "^0.3.0",
