@@ -12,6 +12,7 @@ angular.module('app')
                     class: i + 1
                 };
             }
+            console.log(table);
 $scope.gifs = table;
 });
 
