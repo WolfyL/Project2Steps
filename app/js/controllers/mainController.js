@@ -12,13 +12,31 @@ angular.module('app')
         $scope.modalShown = false;
 
 
+        function verif() {
+            VoteService.getUser($scope.gifId, userId).then(function(res) {
+                $scope.isVote = function() {
+                    if (res.data) {
+                        return true;
+                    }
+                };
+            });
+        }
+
+
         function randomGif() {
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                VoteService.getOne($scope.gifId).then(function(res) {});
+                VoteService.getGif($scope.gifId,$scope.lucky).then(function(res) {
+                    verif();
+                });
             });
         }
+
+
+        $scope.toNext = function() {
+            randomGif();
+        };
 
 
         $scope.toggleModal = function() {
@@ -55,11 +73,15 @@ angular.module('app')
 
 
         $scope.copy = function() {
+          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
+            console.log(res);
+          });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
             document.execCommand('copy');
             return false;
+
         };
 
 

@@ -1,5 +1,12 @@
 angular.module('app')
-    .controller('HistoryController', function($scope) {
+    .controller('HistoryController', function($scope,UserService,CurrentUser) {
+        id = CurrentUser.user()._id;
+        console.log(id);
+
+      UserService.getOne(id).then(function (res){
+        console.log(res.data.vote);
+
+      });
 
       $scope.gifs = [{
         url: 'http://media4.giphy.com/media/l0MYLXhHYuKUD2bZK/giphy.gif',

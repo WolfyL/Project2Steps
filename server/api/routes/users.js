@@ -13,12 +13,15 @@ module.exports = (app) => {
     var user = new User();
 
     app.post('/login', user.connect);
+    
+    router.get('/copy', user.copyUpdate);
 
     router.get('/', Auth.isAdministrator, user.findAll);
 
     router.get('/:id', Auth.isAdministrator, user.findById);
 
     router.post('/', user.create);
+
 
     router.put('/:id', Auth.isAdministrator, user.update);
 

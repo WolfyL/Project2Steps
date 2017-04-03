@@ -7,6 +7,15 @@ angular.module('app')
             getOne: function(id) {
                 return $http.get('/users/' + id);
             },
+            copyUpdate: function(id, gifId) {
+                console.log(id, gifId);
+                return $http.get('/users/copy', {
+                    params: {
+                        user: id,
+                        gif: gifId
+                    }
+                });
+            },
             update: function(id, user) {
                 return $http.put('/users/' + id, user);
             },

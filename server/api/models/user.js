@@ -25,7 +25,19 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    vote: [{
+        gifId: {
+            type: String
+        },
+
+        date: {
+            type: Date,
+            default: Date.now
+        },
+
+    }]
+
 });
 
 userSchema.methods.comparePassword = function(pwd, cb) {
@@ -139,6 +151,24 @@ export default class User {
                     user: user,
                     token: tk
                 });
+            }
+        });
+    }
+    copyUpdate(req, res) {
+        model.findByIdAndUpdate({
+            _id: req.query.user,
+
+        }, {
+            $push: {
+                vote:{gifId: req.query.gif}
+
+            }
+        }, (err, user) => {
+            if (err || !user) {
+                res.status(500).send(err.message);
+            } else {
+
+                res.json(user);
             }
         });
     }

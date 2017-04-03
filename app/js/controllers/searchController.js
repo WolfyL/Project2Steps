@@ -1,8 +1,10 @@
 angular.module('app')
-    .controller('SearchController', function($scope, GifService, $stateParams, VoteService, $location, CurrentUser) {
+    .controller('SearchController', function($scope, GifService, $stateParams, VoteService, $location, CurrentUser, UserService) {
         var n = 0;
         var userId = CurrentUser.user()._id;
+        console.log(userId);
         $scope.gifId = "";
+        $scope.gifUrl= "";
         $scope.theme = $stateParams.query;
         $scope.alert = "";
         $scope.getSearch = [];
@@ -12,14 +14,34 @@ angular.module('app')
             saisie: ""
         };
 
+
+        function verif() {
+            VoteService.getUser($scope.gifId, userId).then(function(res) {
+                $scope.isVote = function() {
+                    if (res.data) {
+                        return true;
+                    }
+                };
+            });
+        }
+
+
         function themeGif() {
             GifService.getSearch($stateParams.query).then(function(res) {
                 var i = Math.floor(Math.random(0, res.data.data.length) * 100);
                 $scope.getSearch = res.data.data[i];
+                $scope.gifUrl = res.data.data[i].url;
+                console.log($scope.gifUrl);
                 $scope.gifId = res.data.data[i].id;
-                VoteService.getOne($scope.gifId).then(function(res) {});
+                VoteService.getGif($scope.gifId, $scope.gifUrl).then(function(res) {});
+                verif();
             });
         }
+
+
+        $scope.toNext = function() {
+            themeGif();
+        };
 
 
         $scope.loupe = function() {
@@ -42,6 +64,9 @@ angular.module('app')
 
 
         $scope.copy = function() {
+          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
+            console.log(res);
+          });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
@@ -61,6 +86,6 @@ angular.module('app')
             themeGif();
         };
 
-        themeGif();
 
+        themeGif();
     });

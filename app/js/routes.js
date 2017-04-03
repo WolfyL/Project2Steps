@@ -17,7 +17,7 @@ angular.module('app')
                 url: '/',
                 views: {
                     'content@': {
-                        templateUrl: 'anon/home.html',
+                        templateUrl: 'anon/main.html',
                           controller: 'MainController'
                     }
                 }
@@ -59,6 +59,15 @@ angular.module('app')
                         controller: 'SearchController'
                     }
                 }
+            })
+            .state('anon.rank', {
+                url: '/rank',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/rank.html',
+                        controller: 'RankController'
+                    }
+                }
             });
         $stateProvider
             .state('user', {
@@ -66,7 +75,7 @@ angular.module('app')
                 url: '/user',
                 views: {
                     'navbar@': {
-                        templateUrl: 'user/navbar.html',
+                        templateUrl: 'anon/navbar.html',
                         controller: 'NavbarController'
                     }
                 },
