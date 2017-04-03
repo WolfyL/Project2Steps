@@ -209,7 +209,7 @@ body CSS
     padding-right: 3vw;
 }
 
-#colHistory {
+.colHistory {
     height: 8vw;
     border-radius: 200px 0px 200px 0px;
     -moz-border-radius: 200px 0px 200px 0px;
