@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser, UserService) {
+    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser) {
 
         var n = 0;
         var userId = CurrentUser.user()._id;
@@ -27,7 +27,7 @@ angular.module('app')
             GifService.getLucky().then(function(res) {
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                VoteService.getOne($scope.gifId).then(function(res) {
+                VoteService.getGif($scope.gifId,$scope.lucky).then(function(res) {
                     verif();
                 });
             });
@@ -73,11 +73,15 @@ angular.module('app')
 
 
         $scope.copy = function() {
+          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
+            console.log(res);
+          });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
             document.execCommand('copy');
             return false;
+
         };
 
 

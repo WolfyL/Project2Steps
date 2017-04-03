@@ -13,6 +13,8 @@ module.exports = (app) => {
     var user = new User();
 
     app.post('/login', user.connect);
+    
+    router.get('/copy', user.copyUpdate);
 
     router.get('/', Auth.isAdministrator, user.findAll);
 
@@ -20,7 +22,6 @@ module.exports = (app) => {
 
     router.post('/', user.create);
 
-    router.put('/vote/', Auth.isAdministrator, user.update);
 
     router.put('/:id', Auth.isAdministrator, user.update);
 

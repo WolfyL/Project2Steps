@@ -59,6 +59,15 @@ angular.module('app')
                         controller: 'SearchController'
                     }
                 }
+            })
+            .state('anon.rank', {
+                url: '/rank',
+                views: {
+                    'content@': {
+                        templateUrl: 'anon/rank.html',
+                        controller: 'RankController'
+                    }
+                }
             });
         $stateProvider
             .state('user', {
