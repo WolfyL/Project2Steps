@@ -20,13 +20,14 @@ angular.module('app')
             },
 
             getAll: function() {
-                return $http.get('/gifs');
+                return $http.get('/gifs/all');
             },
             createGif: function(gif) {
                 return $http.post('/gifs/', gif);
 
             },
             updateLike: function(id, userId) {
+              console.log(id);
                 return $http.put('/gifs/like/' + id, {
                     user: userId
                 });

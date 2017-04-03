@@ -1,6 +1,14 @@
 import mongoose from 'mongoose';
 import User from './user.js';
 
+function compare(a, b) {
+    if (a.vote < b.vote)
+        return 1;
+    if (a.vote > b.vote)
+        return -1;
+    return 0;
+}
+
 const likeSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -12,7 +20,9 @@ const gifSchema = new mongoose.Schema({
     gif: {
         type: String,
     },
-    url: {type: String},
+    url: {
+        type: String
+    },
     like: [likeSchema],
     dislike: [likeSchema]
 });
@@ -28,21 +38,33 @@ export default class Gif {
             if (err || !gifs) {
                 res.send('Nope!');
             } else {
-                res.json(gifs);
+                var rank = [];
+                var table = gifs;
+                for (var i = 0; i < table.length; i++) {
+                    var calc = {
+                        gif: table[i].gif,
+                        url: table[i].url,
+                        vote: table[i].like.length - table[i].dislike.length,
+                        like: table[i].like.length,
+                        dislike: table[i].dislike.length
+                    };
+                    rank.push(calc);
+                    rank.sort(compare);
+                }
+                res.json(rank);
             }
         });
     }
     findUser(req, res) {
-
-        console.log('find',req.query);
-        model.findOne({gif: req.query.gif}, (err, gif) => {
-          console.log();
+        model.findOne({
+            gif: req.query.gif
+        }, (err, gif) => {
             if (err || !gif) {
                 res.status(404);
             } else {
 
                 res.json(
-                   gif.like.some( user => user.user == req.query.user ) || gif.dislike.some( user => user.user == req.query.user )
+                    gif.like.some(user => user.user == req.query.user) || gif.dislike.some(user => user.user == req.query.user)
                 );
             }
         });
@@ -51,9 +73,13 @@ export default class Gif {
     findById(req, res) {
 
         model.findOneAndUpdate({
-            gif: req.query.gif, url: req.query.lien
+            gif: req.query.gif,
+            url: req.query.lien
         }, {
-            gif: req.query.gif, url: req.query.lien
+            gif: req.query.gif,
+            url: req.query.lien,
+            like: [],
+            dislike: []
         }, {
             upsert: true
         }, (err, gif) => {
@@ -79,7 +105,13 @@ export default class Gif {
     likeUpdate(req, res) {
         model.findOneAndUpdate({
             gif: req.params.id
-        }, {$push: {like: {user : req.body.user}}}, (err, gif) => {
+        }, {
+            $push: {
+                like: {
+                    user: req.body.user
+                }
+            }
+        }, (err, gif) => {
 
             if (err || !gif) {
                 res.status("nope").send(err.message);
@@ -91,7 +123,13 @@ export default class Gif {
     dislikeUpdate(req, res) {
         model.findOneAndUpdate({
             gif: req.params.id
-        }, {$push: {dislike: {user : req.body.user}}}, (err, gif) => {
+        }, {
+            $push: {
+                dislike: {
+                    user: req.body.user
+                }
+            }
+        }, (err, gif) => {
             if (err || !gif) {
                 res.status("nope").send(err.message);
             } else {
