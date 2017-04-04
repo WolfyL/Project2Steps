@@ -13,17 +13,18 @@ module.exports = (app) => {
     var user = new User();
 
     app.post('/login', user.connect);
-    
-    router.get('/copy', user.copyUpdate);
+
 
     router.get('/', Auth.isAdministrator, user.findAll);
 
-    router.get('/:id', Auth.isAdministrator, user.findById);
 
-    router.post('/', user.create);
+    router.get('/:id', Auth.hasAuthorization, user.findById);
 
+    router.post('/',Auth.hasAuthorization, user.create);
 
-    router.put('/:id', Auth.isAdministrator, user.update);
+    router.put('/copy/:id',Auth.hasAuthorization, user.copyUpdate);
+
+    router.put('/:id', Auth.hasAuthorization, user.update);
 
     router.delete('/:id', Auth.isAdministrator, user.delete);
 

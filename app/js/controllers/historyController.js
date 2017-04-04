@@ -1,10 +1,10 @@
 angular.module('app')
     .controller('HistoryController', function($scope,UserService,CurrentUser) {
         id = CurrentUser.user()._id;
-        console.log(id);
+        console.log("coucou",id);
 
       UserService.getOne(id).then(function (res){
-        console.log(res.data.vote);
+        console.log(res);
 
       });
 

@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('SearchController', function($scope, GifService, $stateParams, VoteService, $location, CurrentUser, UserService) {
+    .controller('SearchController', function($scope, $state, GifService, $stateParams, VoteService, $location, CurrentUser, UserService) {
         var n = 0;
         var userId = CurrentUser.user()._id;
         console.log(userId);
@@ -58,7 +58,7 @@ angular.module('app')
         $scope.launchSearch = function() {
             var saisie = $scope.search.saisie;
             if (saisie !== undefined) {
-                $location.path('/search/' + saisie);
+              $state.go('user.search', {query: saisie});
             }
         };
 

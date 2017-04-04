@@ -7,14 +7,9 @@ angular.module('app')
             getOne: function(id) {
                 return $http.get('/users/' + id);
             },
-            copyUpdate: function(id, gifId) {
-                console.log(id, gifId);
-                return $http.get('/users/copy', {
-                    params: {
-                        user: id,
-                        gif: gifId
-                    }
-                });
+            copyUpdate: function(id, gif,url) {
+                console.log(id, gif);
+                return $http.put('/users/copy/'+ id ,{gifId: gif, url: url});
             },
             update: function(id, user) {
                 return $http.put('/users/' + id, user);

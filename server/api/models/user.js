@@ -8,6 +8,14 @@ const hashCode = (s) => s.split("").reduce((a, b) => {
     a & a;
 }, 0);
 
+function compare(a, b) {
+    if (a.gifId < b.gifId)
+        return 1;
+    if (a.gifId > b.gifId)
+        return -1;
+    return 0;
+}
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -26,7 +34,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    vote: [{
+    copy: [{
         gifId: {
             type: String
         },
@@ -35,6 +43,7 @@ const userSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         },
+        url: {type: String}
 
     }]
 
@@ -94,6 +103,7 @@ export default class User {
             if (err || !users) {
                 res.sendStatus(403);
             } else {
+
                 res.json(users);
             }
         });
@@ -101,11 +111,18 @@ export default class User {
 
     findById(req, res) {
         model.findById(req.params.id, {
-            password: 0
+            password: 0,
+            copy: function(copy) {
+
+              copy = copy.sort(compare);
+              return copy.reverse();
+            }
         }, (err, user) => {
             if (err || !user) {
                 res.sendStatus(403);
             } else {
+
+
                 res.json(user);
             }
         });
@@ -155,17 +172,12 @@ export default class User {
         });
     }
     copyUpdate(req, res) {
+      console.log("haha",req.query.gif);
         model.findByIdAndUpdate({
-            _id: req.query.user,
-
-        }, {
-            $push: {
-                vote:{gifId: req.query.gif}
-
-            }
-        }, (err, user) => {
+            _id: req.params.id,
+        },{$push:{copy:req.body}}, (err, user) => {
             if (err || !user) {
-                res.status(500).send(err.message);
+                res.status('nop').send(err.message);
             } else {
 
                 res.json(user);

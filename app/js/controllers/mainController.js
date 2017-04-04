@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, GifService, VoteService, $location, UserService, CurrentUser) {
+    .controller('MainController', function($scope, $state, GifService, VoteService, $location, UserService, CurrentUser) {
 
         var n = 0;
         var userId = CurrentUser.user()._id;
@@ -25,9 +25,11 @@ angular.module('app')
 
         function randomGif() {
             GifService.getLucky().then(function(res) {
+
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
-                VoteService.getGif($scope.gifId,$scope.lucky).then(function(res) {
+                $scope.smallUrl = res.data.data.fixed_width_small_url;
+                VoteService.getGif($scope.gifId,$scope.smallUrl).then(function(res) {
                     verif();
                 });
             });
@@ -54,7 +56,7 @@ angular.module('app')
             console.log('saisie', saisie);
             if (saisie !== undefined) {
                 console.log(saisie);
-                $location.path('/search/' + saisie);
+                $state.go('user.search',{query: saisie});
             }
         };
 
@@ -73,7 +75,7 @@ angular.module('app')
 
 
         $scope.copy = function() {
-          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
+          UserService.copyUpdate(userId, $scope.gifId,$scope.smallUrl ).then(function(res){
             console.log(res);
           });
             var toCopy = document.getElementById('to-copy'),
