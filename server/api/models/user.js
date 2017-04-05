@@ -8,13 +8,7 @@ const hashCode = (s) => s.split("").reduce((a, b) => {
     a & a;
 }, 0);
 
-function compare(a, b) {
-    if (a.gifId < b.gifId)
-        return 1;
-    if (a.gifId > b.gifId)
-        return -1;
-    return 0;
-}
+
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -33,19 +27,8 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    },
-    copy: [{
-        gifId: {
-            type: String
-        },
+    }
 
-        date: {
-            type: Date,
-            default: Date.now
-        },
-        url: {type: String}
-
-    }]
 
 });
 
@@ -171,19 +154,7 @@ export default class User {
             }
         });
     }
-    copyUpdate(req, res) {
-      console.log("haha",req.query.gif);
-        model.findByIdAndUpdate({
-            _id: req.params.id,
-        },{$push:{copy:req.body}}, (err, user) => {
-            if (err || !user) {
-                res.status('nop').send(err.message);
-            } else {
 
-                res.json(user);
-            }
-        });
-    }
 
     delete(req, res) {
         model.findByIdAndRemove(req.params.id, (err) => {

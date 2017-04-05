@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, $state, GifService, VoteService, $location, UserService, CurrentUser) {
+    .controller('MainController', function($scope, $state, GifService, VoteService, $location, CopyService, CurrentUser) {
 
         var n = 0;
         var userId = CurrentUser.user()._id;
@@ -29,7 +29,7 @@ angular.module('app')
                 $scope.lucky = res.data.data.image_url;
                 $scope.gifId = res.data.data.id;
                 $scope.smallUrl = res.data.data.fixed_width_small_url;
-                VoteService.getGif($scope.gifId,$scope.smallUrl).then(function(res) {
+                VoteService.getGif($scope.gifId, $scope.smallUrl).then(function(res) {
                     verif();
                 });
             });
@@ -53,31 +53,28 @@ angular.module('app')
 
         $scope.launchSearch = function() {
             var saisie = $scope.search.saisie;
-            console.log('saisie', saisie);
             if (saisie !== undefined) {
-                console.log(saisie);
-                $state.go('user.search',{query: saisie});
+                $state.go('user.search', {
+                    query: saisie
+                });
             }
         };
 
 
         $scope.goSearch = function() {
             search = $scope.search.saisie;
-            console.log(search);
             GifService.getSearch(search).then(function(res) {
                 var i = Math.floor(Math.random(0, 101) * 100);
-                console.log(i);
                 $scope.getSearch = res.data.data[i];
                 $scope.gifId = res.data.data[i].id;
-                console.log($scope.getSearch);
             });
         };
 
 
         $scope.copy = function() {
-          UserService.copyUpdate(userId, $scope.gifId,$scope.smallUrl ).then(function(res){
-            console.log(res);
-          });
+            CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
+                console.log(res);
+            });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
