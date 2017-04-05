@@ -257,27 +257,32 @@ body CSS
 }
 
 .colHistory {
-    height: 8vw;
+    height: 10em;
     border-radius: 200px 0px 200px 0px;
     -moz-border-radius: 200px 0px 200px 0px;
     -webkit-border-radius: 200px 0px 200px 0px;
     border: 1px solid #10EE2E;
-    margin-top: 3vw;
+    margin-top: 5em;
 }
 
 #urlGif {
-    height: 7vw;
-
-    margin-left: 5vw;
+  height: 0em;
+  max-width: 13em;
+  min-width: 13em;
+  max-height: 8em;
+  min-height: 8em;
+  padding-top: 2em;
+  margin-left: 5em;
 }
 
 #box-history {
-    float: right;
-    margin: 2vw;
-    margin-top: -5vw;
-    font-size: 0.9vw;
-    color: #F123B3;
-    list-style-type: none;
+  float: right;
+  margin: 5em;
+  margin-top: -4em;
+  font-size: 1.3em;
+  color: #F123B3;
+  list-style-type: none;
+  text-align: right;
 }
 
 

@@ -2,9 +2,11 @@
     <div class="row">
 
         <div class="col-xs-offset-8 col-xs-1">
+          <form>
             <img ng-click='loupe()' id="GifSearch" src="https://media.giphy.com/media/reIVCrGs6pp28/giphy.gif" alt="">
             <modal-dialog show='modalShown' width='800px' height='60%'>
-                <input ng-model="search.saisie"></input><button type="button" ng-click="launchSearch()">Go!</button>
+                <input ng-model="search.saisie"></input><button type="submit" ng-click="launchSearch()">Go!</button>
+              </form>
 
             </modal-dialog>
         </div>
