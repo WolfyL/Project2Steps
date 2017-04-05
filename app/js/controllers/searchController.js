@@ -4,7 +4,7 @@ angular.module('app')
         var userId = CurrentUser.user()._id;
         console.log(userId);
         $scope.gifId = "";
-        $scope.gifUrl= "";
+        $scope.gifUrl = "";
         $scope.theme = $stateParams.query;
         $scope.alert = "";
         $scope.getSearch = [];
@@ -58,15 +58,17 @@ angular.module('app')
         $scope.launchSearch = function() {
             var saisie = $scope.search.saisie;
             if (saisie !== undefined) {
-              $state.go('user.search', {query: saisie});
+                $state.go('user.search', {
+                    query: saisie
+                });
             }
         };
 
 
         $scope.copy = function() {
-          UserService.copyUpdate(userId, $scope.gifId).then(function(res){
-            console.log(res);
-          });
+            CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
+                console.log(res);
+            });
             var toCopy = document.getElementById('to-copy'),
                 btnCopy = document.getElementById('copy');
             toCopy.select();
