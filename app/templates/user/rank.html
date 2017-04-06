@@ -11,7 +11,7 @@
 
                 <!-- <li>{{ gif.class }}</li> -->
                 <li>{{ gif.like }}/{{ gif.dislike }}</li>
-                <li><input type="text" id='to-copy' value="{{gif.gif}}"><button id="btnCopy" class="btn" ng-click='copy()'>Copy</button></li>
+                <li><input type="text" id='to-copy' value="{{gif.url}}"><button id="btnCopy" class="btn" ng-click='copy("{{gif.url}}")'>Copy</button></li>
             </ul>
         </div>
     </div>

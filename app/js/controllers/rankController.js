@@ -3,15 +3,17 @@ angular.module('app')
         var table = [];
         var classe = {};
         $scope.gifs = [];
+        var userId = CurrentUser.user()._id;
 
-        $scope.copy = function() {
+        $scope.copy = function(copy) {
             UserService.copyUpdate(userId, $scope.gifId, $scope.smallUrl).then(function(res) {
-                console.log(res);
+                // console.log(res);
             });
-            var toCopy = document.getElementById('to-copy'),
-                btnCopy = document.getElementById('copy');
-            toCopy.select();
-            document.execCommand('copy');
+            // var toCopy = document.getElementById('to-copy'),
+            //     btnCopy = document.getElementById('copy');
+
+            // toCopy.select();
+            document.execCommand(copy);
             return false;
         };
 
