@@ -10,6 +10,9 @@ angular.module('app')
         $scope.supported = false;
         $scope.success = function() {
             console.log('Copied!');
+            // CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
+            //     console.log(res);
+            // });
         };
 
         $scope.fail = function(err) {
@@ -17,19 +20,18 @@ angular.module('app')
         };
 
 
-        $scope.copy = function(url) {
-            CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
-                console.log(res);
-            });
-            // var toCopy = document.getElementById('to-copy');
-            // var btnCopy = document.getElementById('copy');
-            // toCopy.select();
-            console.log(url);
-            // document.execCommand('copy', true, url);
-            document.execCommand('copy', true, url);
-            return false;
-
-        };
+        // $scope.copy = function(url) {
+        //     CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
+        //         console.log(res);
+        //     });
+        // var toCopy = document.getElementById('to-copy');
+        // var btnCopy = document.getElementById('copy');
+        // toCopy.select();
+        // console.log(url);
+        // document.execCommand('copy', true, url);
+        //     document.execCommand('copy', true, url);
+        //     return false;
+        // };
 
         VoteService.getAll().then(function(res) {
             var table = res.data;
