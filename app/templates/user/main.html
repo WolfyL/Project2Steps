@@ -38,8 +38,8 @@
     </div>
     <div class="row" id="copyMarge">
         <div class="col-xs-offset-3 col-xs-6" align="center">
-            <input type="text" id='to-copy' value="{{lucky}}">
-            <button id="btnCopy" class="btn" ng-click='copy()'>Copy</button>
+              <input type="text" ng-model="lucky" style="display:none">
+              <button clipboard supported="supported" text="lucky" on-copied="success()" on-error="fail(err)">Copy link</button>
         </div>
     </div>
     <div class="row">

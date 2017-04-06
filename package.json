@@ -10,11 +10,8 @@
     "production": "lineman clean build && node production.js"
   },
   "dependencies": {
-<<<<<<< Updated upstream
     "angular-touch": "X.Y.Z",
-=======
     "angular-clipboard": "^1.5.0",
->>>>>>> Stashed changes
     "clipboard": "^1.6.1",
     "express": "",
     "lineman": "~0.37.0",
