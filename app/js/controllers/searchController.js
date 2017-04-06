@@ -66,7 +66,7 @@ angular.module('app')
             }
         };
 
-
+        
         $scope.copy = function() {
             CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
                 console.log(res);
