@@ -1,20 +1,34 @@
 angular.module('app')
-    .controller('RankController', function($scope, GifService, VoteService, UserService, CurrentUser) {
+    .controller('RankController', function($scope, GifService, VoteService, UserService, CopyService, CurrentUser) {
         var table = [];
         var classe = {};
         $scope.gifs = [];
         var userId = CurrentUser.user()._id;
+        $scope.gifId = "";
 
-        $scope.copy = function(copy) {
-            UserService.copyUpdate(userId, $scope.gifId, $scope.smallUrl).then(function(res) {
-                // console.log(res);
+
+        $scope.supported = false;
+        $scope.success = function() {
+            console.log('Copied!');
+        };
+
+        $scope.fail = function(err) {
+            console.error('Error!', err);
+        };
+
+
+        $scope.copy = function(url) {
+            CopyService.createCopy($scope.gifId, userId, $scope.smallUrl).then(function(res) {
+                console.log(res);
             });
-            // var toCopy = document.getElementById('to-copy'),
-            //     btnCopy = document.getElementById('copy');
-
+            // var toCopy = document.getElementById('to-copy');
+            // var btnCopy = document.getElementById('copy');
             // toCopy.select();
-            document.execCommand(copy);
+            console.log(url);
+            // document.execCommand('copy', true, url);
+            document.execCommand('copy', true, url);
             return false;
+
         };
 
         VoteService.getAll().then(function(res) {
@@ -27,6 +41,5 @@ angular.module('app')
             console.log(table);
             $scope.gifs = table;
         });
-
 
     });
